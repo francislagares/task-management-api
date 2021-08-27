@@ -12,6 +12,10 @@ export class TasksService {
     @InjectRepository(TasksRepository) private tasksRepository: TasksRepository,
   ) {}
 
+  async getTasks(filterDto: GetTasksFilterDto): Promise<Task[]> {
+    return this.tasksRepository.getTasks(filterDto);
+  }
+
   async getTaskById(id: string): Promise<Task> {
     const taskId = await this.tasksRepository.findOne(id);
 
